@@ -1,65 +1,62 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
-# Let-In ----------------------------------------------------------------------------------------{{{
-let
-  inherit (lib) concatStringsSep optional;
-  inherit (config.lib.file) mkOutOfStoreSymlink;
+{pkgs, ...}: {
+  programs.neovim = {
+    enable = true;
 
-  # customNvChad = ./nvchad-custom;
-  populateEnv = ./populate-nvim-env.py;
+    vimAlias = true;
+    viAlias = true;
+    vimdiffAlias = true;
 
-  populateEnvScript = ''
-    mkdir -p ${config.xdg.dataHome}/nvim/site/plugin
-    ${pkgs.python39}/bin/python ${populateEnv} -o ${config.xdg.dataHome}/nvim/site/plugin
-  '';
-  # }}}
-in {
-  # Neovim
-  # https://rycee.gitlab.io/home-manager/options.html#opt-programs.neovim.enable
-  programs.neovim.enable = true;
+    plugins = with pkgs.vimPlugins; [
+      catppuccin-nvim
+      cmp-buffer
+      cmp-nvim-lsp
+      cmp-path
+      cmp-spell
+      cmp-treesitter
+      cmp-vsnip
+      friendly-snippets
+      gitsigns-nvim
+      lightline-vim
+      lspkind-nvim
+      neogit
+      null-ls-nvim
+      nvim-autopairs
+      nvim-cmp
+      nvim-colorizer-lua
+      nvim-lspconfig
+      nvim-tree-lua
+      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
+      plenary-nvim
+      rainbow-delimiters-nvim
+      telescope-fzy-native-nvim
+      telescope-nvim
+      vim-floaterm
+      vim-sneak
+      vim-vsnip
+      which-key-nvim
+    ];
 
-  programs.neovim.viAlias = true;
-  programs.neovim.vimAlias = true;
+    extraPackages = with pkgs; [gcc ripgrep fd];
 
-  # Config and plugins ------------------------------------------------------------------------- {{{
-
-  xdg.configFile."nvim" = {
-    source = "${pkgs.nvchad}";
+    extraConfig = let
+      luaRequire = module:
+        builtins.readFile (builtins.toString
+          ./config
+          + "/${module}.lua");
+      luaConfig = builtins.concatStringsSep "\n" (map luaRequire [
+        "init"
+        "lspconfig"
+        "nvim-cmp"
+        "theming"
+        "treesitter"
+        "treesitter-textobjects"
+        "utils"
+        "which-key"
+      ]);
+    in ''
+      lua << 
+      ${luaConfig}
+      
+    '';
   };
-
-  home.packages = with pkgs; [
-    nvchad
-    (pkgs.writeShellScriptBin "update-nvim-env" ''
-      #
-      # update-nvim-env
-      #
-      # Update neovim env such that it can be used in neovide or other GUIs.
-
-      ${populateEnvScript}
-    '')
-  ];
-
-  home.activation.neovim = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    echo "Populating neovim env..."
-    ${populateEnvScript}
-  '';
-
-  programs.bash.initExtra = lib.mkAfter ''
-    export EDITOR="${config.programs.neovim.package}/bin/nvim"
-  '';
-
-  programs.zsh.initExtra = lib.mkAfter ''
-    export EDITOR="${config.programs.neovim.package}/bin/nvim"
-  '';
-
-  # Required packages -------------------------------------------------------------------------- {{{
-
-  programs.neovim.extraPackages = with pkgs; [];
-  # }}}
 }
-# vim: foldmethod=marker
-
