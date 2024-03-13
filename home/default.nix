@@ -5,13 +5,32 @@
   ...
 }: {
   imports = [
-    ./specialisations.nix
-    ./terminal
+    inputs.nixvim.homeManagerModules.nixvim
     inputs.matugen.nixosModules.default
     inputs.nix-index-db.hmModules.nix-index
-     inputs.hyprlock.homeManagerModules.default
-     inputs.hypridle.homeManagerModules.default
+    inputs.hyprlock.homeManagerModules.default
+    inputs.hypridle.homeManagerModules.default
     self.nixosModules.theme
+
+    # editors
+    ./editors/helix
+    ./editors/neovim
+    ./editors/vscode
+
+    # programs
+    ./programs
+
+    ./desktops/gnome
+
+    # media services
+    ./services/media/playerctl.nix
+
+    # system services
+    ./services/system/power-monitor.nix
+
+    # terminal emulators
+    ./specialisations.nix
+    ./terminal
   ];
 
   home = {

@@ -1,8 +1,8 @@
 {
   imports = [
-    ./fonts.nix
-    ./home-manager.nix
-    ./xdg.nix
+    ./gamemode.nix
+    ./retroarch.nix
+    ./steam.nix
   ];
 
   programs = {

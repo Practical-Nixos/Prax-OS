@@ -17,12 +17,10 @@
       common.default = ["hyprland"];
       hyprland.default = ["hyprland"];
     };
-   };
+  };
 
   # start swayidle as part of hyprland, not sway
   systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
-
-xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   # enable hyprland
   wayland.windowManager.hyprland = {

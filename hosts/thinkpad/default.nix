@@ -10,42 +10,10 @@
   boot = {
     extraModulePackages = with config.boot.kernelPackages; [acpi_call];
     kernelModules = ["acpi_call"];
-    kernelPackages = pkgs.linuxPackages_xanmod_latest;
-
-    # make 3.5mm jack work
-    extraModprobeConfig = ''
-      options snd_hda_intel model=headset-mode
-    '';
+    kernelPackages = pkgs.linuxPackages_latest;
   };
 
-  hardware = {
-    enableAllFirmware = true;
-
-    opengl = {
-      extraPackages = with pkgs; [vaapiIntel libvdpau-va-gl vaapiVdpau intel-ocl];
-      extraPackages32 = with pkgs.pkgsi686Linux; [vaapiIntel libvdpau-va-gl vaapiVdpau];
-    };
-
-    nvidia = {
-      modesetting.enable = true;
-      prime = {
-        offload = {
-          enable = true;
-          enableOffloadCmd = true;
-        };
-        intelBusId = "PCI:0:2:0";
-        nvidiaBusId = "PCI:1:0:0";
-      };
-    };
-  };
-
-  networking.hostName = "rog";
-
-  programs = {
-    hyprland.enable = true;
-
-    steam.enable = true;
-  };
+  networking.hostName = "thinkpad";
 
   services = {
     kmonad.keyboards = {

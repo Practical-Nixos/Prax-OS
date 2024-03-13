@@ -6,7 +6,6 @@
       systems = ["x86_64-linux"];
 
       imports = [
-        ./home/profiles
         ./hosts
         ./lib
         ./modules
@@ -124,8 +123,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    pm = {
-      url = "github:queer-bird/Prax-Modules";
+    nixvim = {
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

@@ -3,8 +3,6 @@
   config,
   ...
 }: {
-
-
   gtk = {
     enable = true;
 
@@ -14,6 +12,5 @@
       name = "Adwaita";
       package = pkgs.gnome.adwaita-icon-theme;
     };
-
   };
 }

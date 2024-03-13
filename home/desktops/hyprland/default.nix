@@ -1,13 +1,13 @@
-{ pkgs, config, ... }:
-
 {
-
+  pkgs,
+  config,
+  ...
+}: {
   imports = [
-
     ./conf
     ./swaylock.nix
     ./wlogout.nix
-    ./swayidle.nix 
+    ./swayidle.nix
 
     ../../editors/helix
 
@@ -16,7 +16,6 @@
 
     ../../services/media/mpd.nix
 
-    ../../services/system/polkit-agent.nix
     ../../services/system/power-monitor.nix
     ../../services/system/udiskie.nix
     ../../services/system/mako.nix
@@ -24,9 +23,9 @@
     ../../terminal/emulators/kitty.nix
   ];
 
-services.poweralertd.enable = true;
+  services.poweralertd.enable = true;
 
-    home.packages = with pkgs; [
+  home.packages = with pkgs; [
     # screenshot
     grim
     slurp

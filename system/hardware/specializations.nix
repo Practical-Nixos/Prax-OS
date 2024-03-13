@@ -1,5 +1,8 @@
+{inputs, ...}:
+
 {
-  specialisation = {
+imports = [inputs.matugen.nixosModules.default];
+      specialisation = {
     light = {
       inheritParentConfig = true;
       configuration.programs.matugen.variant = "light";
