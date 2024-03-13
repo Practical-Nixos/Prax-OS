@@ -7,4 +7,8 @@
     ./office
     ./stylix
   ];
+
+  home.packages = with pkgs; [
+    brave
+  ];
 }

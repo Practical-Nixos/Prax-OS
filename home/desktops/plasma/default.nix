@@ -7,6 +7,8 @@
     ../../services/media/mpd.nix
 
     ../../services/system/kdeconnect.nix
+
+    ./polkit-agent.nix
   ];
 
   home.packages = with pkgs; [

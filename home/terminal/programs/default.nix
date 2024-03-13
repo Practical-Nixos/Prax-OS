@@ -17,6 +17,6 @@
 
   home.packages = with pkgs; [
     tmux
-    self.packages.${pkgs.system}.nvchad
+    emacs
   ];
 }

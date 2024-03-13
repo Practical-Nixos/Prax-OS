@@ -20,7 +20,7 @@
     # programs
     ./programs
 
-    ./desktops/gnome
+    ./desktops/plasma
 
     # media services
     ./services/media/playerctl.nix
@@ -37,7 +37,6 @@
     username = "cmde";
     homeDirectory = "/home/cmde";
     stateVersion = "23.11";
-    extraOutputsToInstall = ["doc" "devdoc"];
   };
 
   # disable manuals as nmd fails to build often

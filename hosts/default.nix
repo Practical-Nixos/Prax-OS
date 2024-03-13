@@ -21,15 +21,11 @@
         #Steam, Fufexan's GameMode, Emulators. Very Optional.
         "${mod}/programs/gaming"
 
-        "${mod}/desktops/gnome.nix"
+        "${mod}/desktops/plasma.nix"
 
-        inputs.hm.nixosModules.home-manager
         {
           home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            #users.cmde.imports = homeImports."cmde@PraxBox";
-            users.cmde.imports = [../home/default.nix];
+            users.cmde.imports = homeImports."cmde@PraxBox";
             extraSpecialArgs = specialArgs;
           };
         }
@@ -43,10 +39,7 @@
         "${mod}"
         ./thinkpad
 
-        #Steam, Fufexan's GameMode, Emulators. Very Optional.
-        #"${mod}/programs/gaming"
-
-        "${mod}/desktops/gnome.nix"
+        "${mod}/desktops/plasma.nix"
 
         {
           home-manager = {
