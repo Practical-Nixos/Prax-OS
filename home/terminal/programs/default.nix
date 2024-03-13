@@ -1,6 +1,8 @@
-{ pkgs, ... }:
-
 {
+  pkgs,
+  self,
+  ...
+}: {
   imports = [
     ./bat.nix
     #./btop.nix
@@ -13,8 +15,8 @@
     ./xdg.nix
   ];
 
-    home.packages = with pkgs; [
+  home.packages = with pkgs; [
     tmux
+    self.packages.${pkgs.system}.nvchad
   ];
-
 }
