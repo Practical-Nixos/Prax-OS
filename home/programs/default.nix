@@ -5,6 +5,6 @@
     ./media
     ./gtk.nix
     ./office
-    #./stylix
+    ./stylix
   ];
 }

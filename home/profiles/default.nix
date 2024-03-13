@@ -11,9 +11,9 @@
       ../.
       ./PraxBox
     ];
-    "cmde@rog" = [
+    "cmde@thinkpad" = [
       ../.
-      ./rog
+      ./thinkpad
     ];
     server = [
       ../.
@@ -35,8 +35,8 @@ in {
         inherit pkgs extraSpecialArgs;
       };
 
-      "cmde_rog" = homeManagerConfiguration {
-        modules = homeImports."cmde@rog";
+      "cmde_thinkpad" = homeManagerConfiguration {
+        modules = homeImports."cmde@thinkpad";
         inherit pkgs extraSpecialArgs;
       };
 

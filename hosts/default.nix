@@ -36,21 +36,25 @@
       ];
     };
 
-    # rog = nixosSystem {
-    #   inherit specialArgs;
-    #   modules =
-    #     laptop
-    #     ++ [
-    #       ./rog
-    #       "${mod}/core/lanzaboote.nix"
+    thinkpad = nixosSystem {
+      inherit specialArgs;
 
-    #       "${mod}/programs/gamemode.nix"
-    #       "${mod}/programs/hyprland.nix"
-    #       "${mod}/programs/steam.nix"
+      modules = [
+        "${mod}"
+        ./thinkpad
 
-    #       "${mod}/services/kmonad"
-    #       {home-manager.users.cmde.imports = homeImports."cmde@rog";}
-    #     ];
-    # };
+        #Steam, Fufexan's GameMode, Emulators. Very Optional.
+        #"${mod}/programs/gaming"
+
+        "${mod}/desktops/gnome.nix"
+
+        {
+          home-manager = {
+            users.cmde.imports = homeImports."cmde@thinkpad";
+            extraSpecialArgs = specialArgs;
+          };
+        }
+      ];
+    };
   };
 }
