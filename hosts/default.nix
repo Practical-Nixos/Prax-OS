@@ -1,9 +1,12 @@
 {
   self,
+  config,
   inputs,
   homeImports,
+  lib,
   ...
 }: {
+  imports = [../settings.nix];
   flake.nixosConfigurations = let
     # shorten paths
     inherit (inputs.nixpkgs.lib) nixosSystem;
@@ -12,38 +15,21 @@
     # get these into the module system
     specialArgs = {inherit inputs self;};
   in {
-    PraxBox = nixosSystem {
+    desktop = nixosSystem {
       inherit specialArgs;
       modules = [
+        "${self}/hosts/${config.prax.form}"
+
         "${mod}"
-        ./PraxBox
 
         #Steam, Fufexan's GameMode, Emulators. Very Optional.
         "${mod}/programs/gaming"
 
-        "${mod}/desktops/plasma.nix"
+        "${mod}/desktops/${config.prax.desktop}.nix"
 
         {
           home-manager = {
-            users.cmde.imports = homeImports."cmde@PraxBox";
-            extraSpecialArgs = specialArgs;
-          };
-        }
-      ];
-    };
-
-    thinkpad = nixosSystem {
-      inherit specialArgs;
-
-      modules = [
-        "${mod}"
-        ./thinkpad
-
-        "${mod}/desktops/plasma.nix"
-
-        {
-          home-manager = {
-            users.cmde.imports = homeImports."cmde@thinkpad";
+            users.cmde.imports = homeImports.desktop;
             extraSpecialArgs = specialArgs;
           };
         }

@@ -9,7 +9,7 @@
   ];
 
   stylix = {
-    image = ./wallpaper.jpg;
+    image = "${config.theme.wallpaper}";
     base16Scheme = ./pinku.yaml;
 
     opacity.terminal = 0.9;

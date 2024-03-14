@@ -18,5 +18,10 @@
   home.packages = with pkgs; [
     tmux
     emacs
+    #dev
+    cppcheck
+    nodejs_21
+    nodePackages_latest.eslint
+    neocmakelsp
   ];
 }

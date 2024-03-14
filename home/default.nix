@@ -2,6 +2,7 @@
   lib,
   self,
   inputs,
+  config,
   ...
 }: {
   imports = [
@@ -11,16 +12,13 @@
     inputs.hyprlock.homeManagerModules.default
     inputs.hypridle.homeManagerModules.default
     self.nixosModules.theme
+    self.nixosModules.settings
 
     # editors
-    ./editors/helix
-    ./editors/neovim
     ./editors/vscode
 
     # programs
     ./programs
-
-    ./desktops/plasma
 
     # media services
     ./services/media/playerctl.nix

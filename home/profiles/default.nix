@@ -7,17 +7,9 @@
   extraSpecialArgs = {inherit inputs self;};
 
   homeImports = {
-    "cmde@PraxBox" = [
+    desktop = [
       ../.
-      ./PraxBox
-    ];
-    "cmde@thinkpad" = [
-      ../.
-      ./thinkpad
-    ];
-    server = [
-      ../.
-      ./server
+      ./desktop
     ];
   };
 
@@ -30,18 +22,8 @@ in {
 
   flake = {
     homeConfigurations = {
-      "cmde_PraxBox" = homeManagerConfiguration {
-        modules = homeImports."cmde@PraxBox";
-        inherit pkgs extraSpecialArgs;
-      };
-
-      "cmde_thinkpad" = homeManagerConfiguration {
-        modules = homeImports."cmde@thinkpad";
-        inherit pkgs extraSpecialArgs;
-      };
-
-      server = homeManagerConfiguration {
-        modules = homeImports.server;
+      "desktop" = homeManagerConfiguration {
+        modules = homeImports.desktop;
         inherit pkgs extraSpecialArgs;
       };
     };

@@ -24,8 +24,8 @@
       nvim-cmp
       nvim-colorizer-lua
       nvim-lspconfig
-      nvim-tree-lua
-      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars))
+      chadtree
+      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
       plenary-nvim
       rainbow-delimiters-nvim
       telescope-fzy-native-nvim

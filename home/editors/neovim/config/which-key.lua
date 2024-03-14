@@ -31,9 +31,16 @@ wk.register({
       y = { "\"+y", "Yank to clipboard" },
     },
   g = {
-    l = { "$", "Line end" },
-    h = { "0", "Line start" },
+    o = { "$", "Line end" },
+    n = { "0", "Line start" },
     s = { "^", "First non-blank in line" },
     e = { "G", "Bottom" },
+    t = { "n", "Tree Sitter Nodes" },
   },
+  l = { "i", "Insert" },
+
+n = { "h", "Left" },
+e = { "j", "Down" },
+i = { "k", "Up" },
+o = { "l", "Right" },
 })
