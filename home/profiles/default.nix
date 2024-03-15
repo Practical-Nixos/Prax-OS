@@ -11,6 +11,10 @@
       ../.
       ./desktop
     ];
+    laptop = [
+      ../.
+      ./laptop
+    ];
   };
 
   inherit (inputs.hm.lib) homeManagerConfiguration;
@@ -24,6 +28,12 @@ in {
     homeConfigurations = {
       "desktop" = homeManagerConfiguration {
         modules = homeImports.desktop;
+        inherit pkgs extraSpecialArgs;
+      };
+    };
+    homeConfigurations = {
+      "laptop" = homeManagerConfiguration {
+        modules = homeImports.laptop;
         inherit pkgs extraSpecialArgs;
       };
     };

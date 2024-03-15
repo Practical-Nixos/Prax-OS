@@ -18,12 +18,27 @@
     desktop = nixosSystem {
       inherit specialArgs;
       modules = [
-        "${self}/hosts/${config.prax.form}"
+        ./desktop
 
         "${mod}"
 
         #Steam, Fufexan's GameMode, Emulators. Very Optional.
         "${mod}/programs/gaming"
+
+        "${mod}/desktops/${config.prax.desktop}.nix"
+
+        {
+          home-manager = {
+            users.cmde.imports = homeImports.desktop;
+            extraSpecialArgs = specialArgs;
+          };
+        }
+      ];
+    };
+    laptop = nixosSystem {
+      inherit specialArgs;
+      modules = [
+        ./laptop
 
         "${mod}/desktops/${config.prax.desktop}.nix"
 

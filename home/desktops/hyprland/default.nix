@@ -1,50 +1,32 @@
 {
+  inputs,
   pkgs,
-  config,
   ...
 }: {
   imports = [
-    ./conf
-    ./swaylock.nix
-    ./wlogout.nix
-    ./swayidle.nix
-
-    ../../editors/helix
-
-    ../../programs
-    ../../programs/stylix
-
-    ../../services/media/mpd.nix
-
-    ../../services/system/power-monitor.nix
-    ../../services/system/udiskie.nix
-    ../../services/system/mako.nix
-
-    ../../terminal/emulators/kitty.nix
+    inputs.hyprland.homeManagerModules.default
+    ./binds.nix
+    ./rules.nix
+    ./settings.nix
+    ../programs/wayland
   ];
 
-  services.poweralertd.enable = true;
-
-  home.packages = with pkgs; [
-    # screenshot
-    grim
-    slurp
-    swaybg
-    waybar
-    rofi
-    imv
-    swaybg
-    poweralertd
-
-    # utils
-    wl-clipboard
-    wl-screenrec
-    wlr-randr
+  home.packages = [
+    inputs.hyprland-contrib.packages.${pkgs.system}.grimblast
   ];
 
-  # make stuff work on wayland
-  home.sessionVariables = {
-    SDL_VIDEODRIVER = "wayland";
-    XDG_SESSION_TYPE = "wayland";
+  # enable hyprland
+  wayland.windowManager.hyprland = {
+    enable = true;
+
+    # plugins = [inputs.hyprland-plugins.packages.${pkgs.system}.csgo-vulkan-fix];
+
+    systemd = {
+      variables = ["--all"];
+      extraCommands = [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
+      ];
+    };
   };
 }

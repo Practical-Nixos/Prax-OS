@@ -5,12 +5,6 @@
 }:
 # networking configuration
 {
-  imports = [
-    ./avahi.nix
-    ./tailscale.nix
-    #./nfs.nix
-  ];
-
   networking.networkmanager = {
     enable = true;
     dns = "systemd-resolved";

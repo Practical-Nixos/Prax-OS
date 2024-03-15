@@ -7,7 +7,7 @@
 
     # programs
     ../../programs
-    ../../desktops/plasma
+    ../../desktops/hyprland
 
     # media services
     ../../services/media/playerctl.nix
