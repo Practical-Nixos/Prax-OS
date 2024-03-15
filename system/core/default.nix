@@ -1,4 +1,4 @@
-{lib, ...}:
+{lib, pkgs, ...}:
 # default configuration shared by all hosts
 {
   imports = [
@@ -14,6 +14,12 @@
     ];
   };
 
+  environment.systemPackages = with pkgs; [
+    cmake
+    gcc
+    gnumake
+    libtool
+  ];
   # don't touch this
   system.stateVersion = lib.mkDefault "23.11";
 

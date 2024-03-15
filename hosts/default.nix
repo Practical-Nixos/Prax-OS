@@ -20,11 +20,6 @@
       modules = [
         ./desktop
 
-        "${mod}"
-
-        #Steam, Fufexan's GameMode, Emulators. Very Optional.
-        "${mod}/programs/gaming"
-
         "${mod}/desktops/${config.prax.desktop}.nix"
 
         {

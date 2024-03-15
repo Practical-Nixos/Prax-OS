@@ -15,7 +15,7 @@
     self.nixosModules.settings
 
     # editors
-    ./editors/vscode
+   ./editors/emacs
 
     # programs
     ./programs
