@@ -1,35 +1,38 @@
-{config, ...}: let
-  variant = config.theme.name;
-  c = config.programs.matugen.theme.colors.colors_android.${variant};
-  pointer = config.home.pointerCursor;
-in {
+{config, ...}:
+{
   wayland.windowManager.hyprland.settings = {
     "$mod" = "ALT";
     env = [
       "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+      "HYPRCURSOR_SIZE,48"
     ];
 
     exec-once = [
+      "polkit-agent-helper-1"
+      "polkit-gnome-authentication-agent-1"
       # set cursor for HL itself
-      "hyprctl setcursor ${pointer.name} ${toString pointer.size}"
-      #"systemctl --user start clight"
+      "systemctl --user start clight"
+      "emacs --daemon"
     
     ];
 
+    monitor = ",highrr,auto,1";
+
     general = {
       layout = "master";
-      gaps_in = 5;
-      gaps_out = 5;
+      gaps_in = 0;
+      gaps_out = 0;
       border_size = 4;
-      "col.active_border" = "rgba(88888888)";
-      "col.inactive_border" = "rgba(00000088)";
 
       allow_tearing = true;
       resize_on_border = true;
     };
 
     decoration = {
-      rounding = 16;
+      #rounding = 16;
+      rounding = 0;
+      dim_inactive = true;
+      dim_strength = 0.2;
       blur = {
         enabled = true;
         brightness = 1.0;
@@ -45,11 +48,10 @@ in {
       shadow_offset = "0 2";
       shadow_range = 20;
       shadow_render_power = 3;
-      "col.shadow" = "rgba(00000055)";
     };
 
     animations = {
-      enabled = true;
+      enabled = false;
       animation = [
         "border, 1, 2, default"
         "fade, 1, 4, default"
@@ -64,15 +66,17 @@ in {
         gradients = false;
       };
 
-      "col.border_active" = "rgba(${c.color_accent_primary}88);";
-      "col.border_inactive" = "rgba(${c.color_accent_primary_variant}88)";
+   #   "col.border_active" = "rgba(${c.color_accent_primary}88);";
+   #   "col.border_inactive" = "rgba(${c.color_accent_primary_variant}88)";
     };
 
     input = {
       kb_layout = "us";
+      sensitivity = 1.0;
 
       # focus change on cursor move
       follow_mouse = 1;
+
       accel_profile = "flat";
       touchpad.scroll_factor = 0.1;
     };
@@ -86,8 +90,6 @@ in {
     misc = {
       # disable auto polling for config file changes
       disable_autoreload = true;
-
-      force_default_wallpaper = 0;
 
       # disable dragging animation
       animate_mouse_windowdragging = false;

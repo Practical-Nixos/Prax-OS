@@ -44,7 +44,9 @@
   boot.kernelModules = ["tcp_bbr"];
 
   security = {
-    # allow wayland lockers to unlock the screen
+
+    polkit.enable = true;
+      # allow wayland lockers to unlock the screen
     pam.services.hyprlock.text = "auth include login";
 
     # userland niceness

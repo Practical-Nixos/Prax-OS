@@ -7,6 +7,7 @@ in {
     ./programs
     ./shell/starship.nix
     ./shell/zsh.nix
+    ./emulators/kitty.nix
   ];
 
   # add environment variables

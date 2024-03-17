@@ -54,13 +54,13 @@
 
     fu.url = "github:numtide/flake-utils";
 
-    gross = {
-      url = "github:fufexan/gross";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
+    #gross = {
+     # url = "github:fufexan/gross";
+     # inputs.nixpkgs.follows = "nixpkgs";
+     # inputs.flake-parts.follows = "flake-parts";
+    #};
 
-    helix.url = "github:helix-editor/helix";
+   # helix.url = "github:helix-editor/helix";
 
     hm = {
       url = "github:nix-community/home-manager";
@@ -84,13 +84,13 @@
     hyprlock.url = "github:hyprwm/hyprlock";
 
     hyprpaper.url = "github:hyprwm/hyprpaper";
-    #
-    #     kmonad = {
-    #       url = "github:kmonad/kmonad?dir=nix";
-    #       inputs.nixpkgs.follows = "nixpkgs";
-    #     };
 
-    lanzaboote.url = "github:nix-community/lanzaboote";
+   #      kmonad = {
+   #        url = "github:kmonad/kmonad?dir=nix";
+   #        inputs.nixpkgs.follows = "nixpkgs";
+  #       };
+
+  # lanzaboote.url = "github:nix-community/lanzaboote";
 
     matugen = {
       url = "github:InioX/matugen/module";
@@ -124,11 +124,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    yazi.url = "github:sxyazi/yazi";
+   # nixvim = {
+   #   url = "github:nix-community/nixvim";
+   #   inputs.nixpkgs.follows = "nixpkgs";
+   # };
   };
 }

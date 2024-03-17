@@ -13,7 +13,7 @@
     package = inputs.kmonad.packages.${pkgs.system}.default;
     keyboards = {
       one2mini = {
-        device = "/dev/input/by-id/usb-Ducky_Ducky_One2_Mini_RGB_DK-V1.17-190813-event-kbd";
+        device = "/dev/input/by-id/usb-HS6209_2.4G_Wireless-Receiver_No.161-0047-5-event-kbd";
         defcfg = {
           enable = true;
           fallthrough = true;

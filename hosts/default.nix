@@ -12,15 +12,20 @@
     inherit (inputs.nixpkgs.lib) nixosSystem;
     mod = "${self}/system";
 
+    inherit (import "${self}/system") core laptop gnome plasma hyprland;
+
     # get these into the module system
     specialArgs = {inherit inputs self;};
   in {
-    desktop = nixosSystem {
+    Prax-OS = nixosSystem {
       inherit specialArgs;
-      modules = [
+      modules =
+        hyprland
+          ++
+          [
         ./desktop
 
-        "${mod}/desktops/${config.prax.desktop}.nix"
+        "${mod}/services/kmonad"
 
         {
           home-manager = {

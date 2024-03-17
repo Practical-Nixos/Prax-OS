@@ -14,6 +14,8 @@
     self.nixosModules.theme
     self.nixosModules.settings
 
+   ./desktops/hyprland
+
     # editors
    ./editors/emacs
 

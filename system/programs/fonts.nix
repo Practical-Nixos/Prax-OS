@@ -5,6 +5,7 @@
       material-symbols
 
       # Sans(Serif) fonts
+      corefonts
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
@@ -18,8 +19,8 @@
       (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     ];
 
-    # causes more issues than it solves
-    enableDefaultPackages = false;
+
+    #enableDefaultPackages = false;
 
     # user defined fonts
     # the reason there's Noto Color Emoji everywhere is to override DejaVu's

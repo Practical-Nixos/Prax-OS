@@ -8,7 +8,10 @@
     ./binds.nix
     ./rules.nix
     ./settings.nix
-    ../programs/wayland
+    ../../programs/wayland
+    ../../services/wayland/hyprpaper.nix
+    #../../services/wayland/hypridle.nix
+
   ];
 
   home.packages = [

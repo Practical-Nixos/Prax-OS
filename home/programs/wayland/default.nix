@@ -6,7 +6,6 @@
 # Wayland config
 {
   imports = [
-    ./hyprland
     ./hyprlock.nix
     ./wlogout.nix
     ./waybar.nix

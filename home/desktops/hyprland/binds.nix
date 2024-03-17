@@ -33,16 +33,13 @@ in {
         "$mod, C, killactive,"
         "$mod, F, fullscreen,"
         "$mod, G, togglegroup,"
-        "$mod SHIFT, N, changegroupactive, f"
-        "$mod SHIFT, P, changegroupactive, b"
-        "$mod, R, togglesplit,"
         "$mod SHIFT, F, togglefloating,"
         "$mod, P, pseudo,"
-        "$mod ALT, ,resizeactive,"
 
         # utility
         # terminal
         "$mod, T, exec, kitty"
+        "$mod, J, exec, emacsclient -r"
         # logout menu
         "$mod, Escape, exec, wlogout -p layer-shell"
         # lock screen

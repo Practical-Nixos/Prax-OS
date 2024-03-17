@@ -19,16 +19,12 @@
       layer = "top";
       position = "top";
       tray = { spacing = 10; };
-      modules-center = [ "hyprland/window" ];
+      modules-center = [ "clock" ];
       modules-left = [ "hyprland/workspaces" "hyprland/mode" ];
       modules-right = [
+        "tray"
         "pulseaudio"
         "network"
-        "cpu"
-        "memory"
-        "temperature"
-        "clock"
-        "tray"
       ];
       battery = {
         format = "{capacity}% {icon}";
@@ -65,9 +61,9 @@
         format-icons = {
           car = "";
           default = [ "" "" "" ];
-          handsfree = "";
+          handsfree = "";
           headphones = "";
-          headset = "";
+          headset = "";
           phone = "";
           portable = "";
         };
